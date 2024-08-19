@@ -1,28 +1,34 @@
 import "./App.css";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  Route,
-} from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 
-import Dashboard from "./pages/Dashboard";
-import RoutLayout from "./layout/RoutLayout";
-import Profile from "./pages/Profile";
-import Create from "./pages/Create";
+import Home from "./pages/Home";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<RoutLayout />}>
-      <Route index element={<Dashboard />} />
-      <Route path="/create" element={<Create />} />
-      <Route path="/profile" element={<Profile />} />
-    </Route>
-  )
-);
+import Shop from "./pages/Shop";
+import Pages from "./pages/Pages";
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/shop"}> Shop</Link>
+          </li>
+          <li>
+            <Link to={"pages"}> Pages</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="pages" element={<Pages />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
