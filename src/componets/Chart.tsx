@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, DeleteIcon } from "@chakra-ui/icons";
 import {
   Button,
   Center,
@@ -15,7 +15,12 @@ const isEmptyChart = (chart: string[]): boolean => {
 
 const Chart = () => {
   const [chart, setChart] = useState(["potato", "test", "aaah"]);
-  const list_product = chart.map((x) => <MenuItem> {x} </MenuItem>);
+  const list_product = chart.map((x) => (
+    <MenuItem>
+      {" "}
+      {x} <DeleteIcon />{" "}
+    </MenuItem>
+  ));
   let i = 0;
   return (
     <Menu>
@@ -34,7 +39,7 @@ const Chart = () => {
             delet All
           </MenuItem>
         )}
-        {isEmptyChart(chart) && <Center>Nothing in chart yet</Center>}
+        {isEmptyChart(chart) && <Center>Empty Chart</Center>}
       </MenuList>
     </Menu>
   );

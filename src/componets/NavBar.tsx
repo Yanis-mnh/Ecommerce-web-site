@@ -1,4 +1,4 @@
-import { ChevronDownIcon, SearchIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, SearchIcon, SmallCloseIcon } from "@chakra-ui/icons";
 import {
   Flex,
   Heading,
@@ -8,47 +8,95 @@ import {
   Spacer,
   Text,
   MenuItem,
+  Input,
+  Button,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Chart from "./Chart";
+import { useState } from "react";
+
+const serchBar = (openSerch: boolean) => {
+  return (
+    openSerch && (
+      <Input
+        margin={"0 0 0 10px"}
+        width={"50%"}
+        size={"md"}
+        placeholder="Search Product"
+      />
+    )
+  );
+};
 
 const NavBar = () => {
+  const [openSerch, setOpenSerch] = useState(false);
   return (
-    <Flex bg={"gray.200"} justify={"space-between"} alignItems={"center"}>
+    <Flex
+      minH={"3em"}
+      bg={"gray.200"}
+      justify={"space-between"}
+      alignItems={"center"}
+    >
       <div className="test"></div>
       <Heading as={"h6"}>YANIX</Heading>
       <Spacer></Spacer>
-      <Menu>
-        <MenuButton as={Text}>
-          Home
-          <ChevronDownIcon />
-        </MenuButton>
-        <MenuList>
-          <MenuItem as={Link} to={"/pages"}>
-            Featured Products
-          </MenuItem>
-          <MenuItem>Best Sellers</MenuItem>
-          <MenuItem>New Arrivals</MenuItem>
-          <MenuItem>Seasonal Offers</MenuItem>
-        </MenuList>
-      </Menu>
-      <Link to={"/shop"}>
-        <Text p={"10px"}>Shop</Text>
-      </Link>
-      <Link to={"/pages"}>
-        <Text p={"10px"}>
-          Pages <ChevronDownIcon />
-        </Text>
-      </Link>
-      <Link to={"/about-us"}>
-        <Text p={"10px"}>About Us</Text>
-      </Link>
-      <Link to={"/blog"}>
-        <Text p={"10px"}>Blog</Text>
-      </Link>
+      {!openSerch && (
+        <>
+          <Menu>
+            <MenuButton as={Text} cursor={"pointer"}>
+              Home
+              <ChevronDownIcon />
+            </MenuButton>
+            <MenuList>
+              <MenuItem as={Link} to={"/pages"}>
+                Featured Products
+              </MenuItem>
+              <MenuItem>Best Sellers</MenuItem>
+              <MenuItem>New Arrivals</MenuItem>
+              <MenuItem>Seasonal Offers</MenuItem>
+            </MenuList>
+          </Menu>
+          <Link to={"/shop"}>
+            <Text p={"10px"}>Shop</Text>
+          </Link>
+          <Menu>
+            <MenuButton>
+              {" "}
+              Pages <ChevronDownIcon />
+            </MenuButton>
+            <MenuList>
+              <MenuItem as={Link} to={"/pages"}>
+                Featured Products
+              </MenuItem>
+              <MenuItem>FAQ</MenuItem>
+              <MenuItem>Contact Us</MenuItem>
+              <MenuItem>Track Order</MenuItem>
+              <MenuItem>Login/Register</MenuItem>
+            </MenuList>
+          </Menu>
+          <Link to={"/about-us"}>
+            <Text p={"10px"}>About Us</Text>
+          </Link>
+          <Link to={"/blog"}>
+            <Text p={"10px"}>Blog</Text>
+          </Link>
+        </>
+      )}
       <Spacer />
       <Chart />
-      <SearchIcon mx={"10px"} cursor={"pointer"} boxSize={"1.5em"} />
+      {serchBar(openSerch)}
+
+      <Button
+        bg={"transparent"}
+        _active={"transparent"}
+        mx={"10px"}
+        cursor={"pointer"}
+        boxSize={"1.5em"}
+        leftIcon={openSerch ? <SmallCloseIcon /> : <SearchIcon />}
+        onClick={() => {
+          setOpenSerch(!openSerch);
+        }}
+      />
     </Flex>
   );
 };
