@@ -36,6 +36,7 @@ const NavBar = () => {
       bg={"gray.200"}
       justify={"space-between"}
       alignItems={"center"}
+      position={"sticky"}
     >
       <div className="test"></div>
       <Heading as={"h6"}>YANIX</Heading>

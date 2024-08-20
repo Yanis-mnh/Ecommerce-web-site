@@ -1,4 +1,4 @@
-import { Center, Heading, Text } from "@chakra-ui/react";
+import { Center, Heading } from "@chakra-ui/react";
 
 const AboutUs = () => {
   return (
