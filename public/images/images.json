@@ -333,6 +333,5 @@
             "alt": "Woman Standing on Cliff"
         }
     ],
-    "total_results": 8000,
-    "next_page": "https://api.pexels.com/v1/search/?page=2\u0026per_page=15\u0026query=backpack"
+    "total_results": 8000
 }
