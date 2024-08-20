@@ -9,7 +9,7 @@ import {
   Text,
   MenuItem,
   Input,
-  Button,
+  IconButton,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Chart from "./Chart";
@@ -87,13 +87,13 @@ const NavBar = () => {
       <Chart />
       {serchBar(openSerch)}
 
-      <Button
+      <IconButton
+        aria-label="searchButton"
         bg={"transparent"}
-        _active={"transparent"}
         mx={"10px"}
         cursor={"pointer"}
         boxSize={"1.5em"}
-        leftIcon={openSerch ? <SmallCloseIcon /> : <SearchIcon />}
+        icon={openSerch ? <SmallCloseIcon /> : <SearchIcon />}
         onClick={() => {
           setOpenSerch(!openSerch);
         }}
